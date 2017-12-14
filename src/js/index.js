@@ -1,1 +1,1 @@
-const css = require('cssPath/index.css');
+const css = PRODUCTION ? require('cssPath/production.css') : require('cssPath/develop.css');

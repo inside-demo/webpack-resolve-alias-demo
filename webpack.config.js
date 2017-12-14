@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -13,6 +14,16 @@ module.exports = {
         'cssPath': path.resolve(__dirname, 'src/css')
       }
     },
+    resolveLoader: {
+        modules: ['node_modules']
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+          PRODUCTION: process.env.NODE_ENV 
+            ? JSON.stringify(true) 
+            : JSON.stringify(false)
+        })
+    ],
     module: {
         rules: [
             {
